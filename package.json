@@ -1,0 +1,28 @@
+{
+  "name": "tvtalk-discord",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tvtalk.js",
+  "scripts": {
+    "test": "test",
+    "start": "node tvtalk.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skavrx/TVTalk-Discord.git"
+  },
+  "keywords": [
+    "tvtalk",
+    "discord",
+    "bot"
+  ],
+  "author": "skavrx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skavrx/TVTalk-Discord/issues"
+  },
+  "homepage": "https://github.com/skavrx/TVTalk-Discord#readme",
+  "dependencies": {
+    "discord.js": "^10.0.1"
+  }
+}
