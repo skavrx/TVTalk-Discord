@@ -1,0 +1,38 @@
+{
+    "FLASH": {
+        "id": "FLASH",
+        "aliases": ["The Flash"],
+        "name": "Flash",
+        "channel": "starlabs",
+        "description": "",
+        "rank": "Speedsters",
+        "color": "something gold",
+        "rating": "",
+        "link": [""],
+        "where": ["Netflix", "CW"]
+    },
+    "LEGENDS": {
+        "id": "LEGENDSOFTOMORROW",
+        "aliases": ["DC's Legends of Tomorrow"],
+        "name": "Legends of Tomorrow",
+        "channel": "thewaverider",
+        "description": "",
+        "rank": "Legends",
+        "color": "",
+        "rating": "",
+        "link": [""],
+        "where": ["Netflix", "CW"]
+    },
+    "ARROW": {
+        "id": "ARROW",
+        "aliases": ["The Arrow"],
+        "name": "Arrow",
+        "channel": "arrowcave",
+        "description": "",
+        "rank": "Team Arrow",
+        "color": "",
+        "rating": "",
+        "link": [""],
+        "where": ["Netflix", "CW"]
+    }
+}
