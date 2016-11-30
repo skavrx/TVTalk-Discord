@@ -24,6 +24,7 @@
   "homepage": "https://github.com/skavrx/TVTalk-Discord#readme",
   "dependencies": {
     "discord.js": "^10.0.1",
+    "fs": "0.0.1-security",
     "node-opus": "^0.2.4",
     "opusscript": "0.0.1"
   }

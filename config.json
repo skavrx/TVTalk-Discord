@@ -3,5 +3,6 @@
   "addUrl": "https://discordapp.com/oauth2/authorize?client_id=252987988227653632&scope=bot&permissions=0",
   "serverID": "250735225620004865",
 
-  "prefix"
+  "prefix": "!",
+  "debug": false
 }
