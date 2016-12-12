@@ -99,25 +99,40 @@ var commands = {
         }
     },
     "addshow": {
-      usage: "",
-      description: "",
-      process: function(bot, msg, suffix) {
-        fs.writeFile("./shows.json", JSON.stringify(Permissions, null, 2));
-      }
+        usage: "showid;name;aliases (seperated by commas);description;channel;rank;color;rating;link (commas);where (commas)",
+        description: "",
+        process: function(bot, msg, suffix) {
+            shows[suffix] = {};
+            fs.writeFile("./shows.json", JSON.stringify(shows, null, 2));
+        }
     },
     "editshow": {
 
     },
     "request": {
-      
+
+    },
+    "viewall": {
+      usage: "[true | false]",
+      description: "Allows the user to view all the text channels for all shows.",
+      process: function(bot, msg, suffix) {
+        if (!msg.guild.members.find("id", msg.author.id).roles.exists("name", "all")) {
+          msg.guild.members.find("id", msg.author.id).addRole(msg.guild.roles.find("name", "all"));
+          msg.reply(`You can now view all channels! Type **${config.prefix}viewall** again to turn it off.`);
+        } else {
+          msg.guild.members.find("id", msg.author.id).removeRole(msg.guild.roles.find("name", "all"));
+          msg.reply(`You can no longer view all channels! Type **${config.prefix}viewall** again to turn it on.`);
+        }
+
+      }
     }
 };
 
-try{
-	aliases = require("./alias.json");
-} catch(e) {
-	//No aliases defined
-	aliases = {};
+try {
+    aliases = require("./alias.json");
+} catch (e) {
+    //No aliases defined
+    aliases = {};
 }
 
 bot.on('ready', () => {
@@ -136,16 +151,19 @@ bot.on('guildMemberAdd', member => {
 
 function checkMessageForCommand(msg, isEdit) {
     //check if message is a command
-    if (msg.author.id != bot.user.id && (msg.content[0] === config.prefix)) {
+    if (msg.author.id == bot.user.id) return;
+    if (msg.isMentioned(bot.user.id) || (msg.content[0] === config.prefix)) {
         console.log("treating " + msg.content + " from " + msg.author + " as command");
         var cmdTxt = msg.content.split(" ")[0].substring(1);
         var suffix = msg.content.substring(cmdTxt.length + 2); //add one for the ! and one for the space
-        if (msg.isMentioned(bot.user)) {
+        var mention = `<@${bot.user.id}>`;
+        if (msg.isMentioned(bot.user.id)) {
             try {
                 cmdTxt = msg.content.split(" ")[1];
-                suffix = msg.content.substring(bot.user.mention().length + cmdTxt.length + 2);
+                suffix = msg.content.substring(bot.user.id.length+3+cmdTxt.length+2);
             } catch (e) { //no command
-                msg.channel.sendMessage("Yes?");
+                var msgs = ["Hm?", "What?", "Excuse me?", "What do you want?"];
+                msg.channel.sendMessage(msgs[Math.floor(Math.random() * msgs.length)]);
                 return;
             }
         }
